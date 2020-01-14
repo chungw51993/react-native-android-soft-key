@@ -9,6 +9,7 @@ import com.facebook.react.bridge.Callback;
 import java.util.HashMap;
 import java.util.Map;
 import android.os.Build;
+import android.app.Activity;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.KeyCharacterMap;
@@ -67,7 +68,7 @@ public class RNAndroidSoftKeyModule extends ReactContextBaseJavaModule {
 
         hasSoftwareKeys =  (realWidth - displayWidth) > 0 || (realHeight - displayHeight) > 0;
     } else {
-        boolean hasMenuKey = ViewConfiguration.get(mContext).hasPermanentMenuKey();
+        boolean hasMenuKey = ViewConfiguration.get(this.reactContext).hasPermanentMenuKey();
         boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
 
         hasSoftwareKeys = !hasMenuKey && !hasBackKey;
